@@ -1,0 +1,17 @@
+{
+  "name": "document-matcher",
+  "main": "src/document-matcher.js",
+  "version": "0.0.0",
+  "dependencies": {
+    "underscore.deep": "git://github.com/simonfan/underscore.deep.git",
+    "underscore": "~1.5.2",
+    "underscore.contains": "~0.0.1"
+  },
+  "devDependencies": {
+    "requirejs": "*",
+    "requirejs-text": "*",
+    "underscore": "*",
+    "jquery": "*",
+    "qunit": "*"
+  }
+}

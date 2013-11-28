@@ -1,0 +1,25 @@
+{
+  "name": "document-matcher",
+  "main": "./src/document-matcher",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simonfan/document-matcher.git"
+  },
+  "dependencies": {
+    "amdefine": ">=0.1.0",
+    "underscore": "~1.5.2",
+    "underscore.deep": "git://github.com/simonfan/underscore.deep.git",
+    "underscore.contains": "0.0.1"
+  },
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-connect": "*",
+    "grunt-bower-requirejs": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-nodeunit": "*",
+    "grunt-contrib-yuidoc": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-requirejs": "*"
+  }
+}

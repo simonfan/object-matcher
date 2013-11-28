@@ -1,0 +1,33 @@
+{
+    "project": {
+        "name": "document-matcher",
+        "version": "0.0.0"
+    },
+    "files": {
+        "src/document-matcher.js": {
+            "name": "src/document-matcher.js",
+            "modules": {
+                "DocumentMatcher": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "DocumentMatcher": {
+            "name": "DocumentMatcher",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/document-matcher.js",
+            "line": 5,
+            "description": "AMD and CJS module."
+        }
+    },
+    "classes": {},
+    "classitems": [],
+    "warnings": []
+}
