@@ -103,7 +103,7 @@ module.exports = function (grunt) {
 
 					// exclude these modules AND their dependencies
 					// (excluding your bower dependencies)
-					exclude: ["underscore.deep","underscore","underscore.contains"],
+					exclude: ['underscore.deep', 'underscore', 'underscore.contains'],
 
 					// excludeShallow
 					excludeShallow: [],

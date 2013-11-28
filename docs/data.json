@@ -7,27 +7,371 @@
         "src/document-matcher.js": {
             "name": "src/document-matcher.js",
             "modules": {
-                "DocumentMatcher": 1
+                "document-matcher": 1
             },
-            "classes": {},
+            "classes": {
+                "operators": 1,
+                "evaluators": 1
+            },
             "fors": {},
             "namespaces": {}
         }
     },
     "modules": {
-        "DocumentMatcher": {
-            "name": "DocumentMatcher",
+        "document-matcher": {
+            "name": "document-matcher",
             "submodules": {},
-            "classes": {},
+            "classes": {
+                "operators": 1,
+                "evaluators": 1
+            },
             "fors": {},
             "namespaces": {},
             "tag": "module",
             "file": "src/document-matcher.js",
-            "line": 5,
-            "description": "AMD and CJS module."
+            "line": 189,
+            "description": "Curry functions to match documents against a set of criteria\ninspired on mongoDb's query language."
         }
     },
-    "classes": {},
-    "classitems": [],
+    "classes": {
+        "operators": {
+            "name": "operators",
+            "shortname": "operators",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "document-matcher",
+            "namespace": "",
+            "file": "src/document-matcher.js",
+            "line": 20,
+            "static": 1
+        },
+        "evaluators": {
+            "name": "evaluators",
+            "shortname": "evaluators",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "document-matcher",
+            "namespace": "",
+            "file": "src/document-matcher.js",
+            "line": 189,
+            "static": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/document-matcher.js",
+            "line": 25,
+            "description": "Effectively does the matching against a single value",
+            "itemtype": "method",
+            "name": "$matchSingle",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "\n   String|Number: expected === value\n   RegExp: expected.match",
+                    "type": "String|Number|RegExp"
+                },
+                {
+                    "name": "value",
+                    "description": "\n   Cannot be Array!",
+                    "type": "String|Number|Boolean"
+                }
+            ],
+            "return": {
+                "description": "True if matches, false if not.",
+                "type": "Boolean"
+            },
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 39,
+            "description": "Verify if `value` supplied attends the `expected`.\nBehaves according to the type of `expected`. See {{#crossLink 'MongoQueryOperators/$matchSingle:method'}}{{/crossLink}}.\nIf `value` is an array of values, returns true if ANY of the\nvalues attends the `expected`.",
+            "itemtype": "method",
+            "name": "$match",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "String|Number|RegExp"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "String|Number|Boolean|Array"
+                }
+            ],
+            "return": {
+                "description": "True if matches, false if not.",
+                "type": "Boolean"
+            },
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 54,
+            "description": "Lesser than (<).",
+            "itemtype": "method",
+            "name": "$lt",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "Number|String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number|String"
+                }
+            ],
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 64,
+            "description": "Lesser than or equal (<=).",
+            "itemtype": "method",
+            "name": "$lte",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "Number|String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number|String"
+                }
+            ],
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 74,
+            "description": "Greater than (>).",
+            "itemtype": "method",
+            "name": "$gt",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "Number|String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number|String"
+                }
+            ],
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 84,
+            "description": "Greater than or equal (>=).",
+            "itemtype": "method",
+            "name": "$gte",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "Number|String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number|String"
+                }
+            ],
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 94,
+            "itemtype": "method",
+            "name": "$in",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "value",
+                    "description": "\n    Array: returns `true` if any of the values is in `expected`.",
+                    "type": "String|Number|Array"
+                }
+            ],
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 106,
+            "itemtype": "method",
+            "name": "$nin",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "value",
+                    "description": "\n    Array: returns `true` if any of the values is not in `expected`.",
+                    "type": "String|Number|Array"
+                }
+            ],
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 118,
+            "itemtype": "method",
+            "name": "$all",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Array"
+                }
+            ],
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 127,
+            "itemtype": "method",
+            "name": "$e",
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 134,
+            "itemtype": "method",
+            "name": "$ne",
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 141,
+            "itemtype": "method",
+            "name": "$not",
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 146,
+            "itemtype": "method",
+            "name": "$or",
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 151,
+            "itemtype": "method",
+            "name": "$and",
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 156,
+            "itemtype": "method",
+            "name": "$exists",
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 161,
+            "itemtype": "method",
+            "name": "$where",
+            "class": "operators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 194,
+            "description": "Evaluates a value against criterion",
+            "itemtype": "method",
+            "name": "evaluateValue",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Any"
+                },
+                {
+                    "name": "criterion",
+                    "description": "\n    String|Number|RegExp : simple comparison\n    Object               : loop through multiple criteria.",
+                    "type": "String|Number|RegExp|Object"
+                }
+            ],
+            "class": "evaluators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 222,
+            "description": "Evaluates a document against a set of criteria.",
+            "itemtype": "method",
+            "name": "evaluateDocument",
+            "params": [
+                {
+                    "name": "document",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "criteria",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "evaluators",
+            "module": "document-matcher"
+        },
+        {
+            "file": "src/document-matcher.js",
+            "line": 239,
+            "description": "Returns a function that compares documents according to a specific criteria.",
+            "itemtype": "method",
+            "name": "documentMatcher",
+            "params": [
+                {
+                    "name": "criteria",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "evaluators",
+            "module": "document-matcher"
+        }
+    ],
     "warnings": []
 }

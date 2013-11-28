@@ -1,14 +1,17 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
-    "classes": [],
+    "classes": [
+        "evaluators",
+        "operators"
+    ],
     "modules": [
-        "DocumentMatcher"
+        "document-matcher"
     ],
     "allModules": [
         {
-            "displayName": "DocumentMatcher",
-            "name": "DocumentMatcher",
-            "description": "AMD and CJS module."
+            "displayName": "document-matcher",
+            "name": "document-matcher",
+            "description": "Curry functions to match documents against a set of criteria\ninspired on mongoDb's query language."
         }
     ]
 } };

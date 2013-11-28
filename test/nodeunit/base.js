@@ -27,7 +27,7 @@ exports.Base = {
 	},
 
 	// tests:
-	Base: function (test) {
+	loading: function (test) {
 		var DocumentMatcher = require('../../src/document-matcher');
 
 		test.ok(DocumentMatcher, 'DocumentMatcher loaded without any explosions! :D');

@@ -5,32 +5,24 @@ define(['document-matcher'], function (DocumentMatcher) {
 
 		QUnit.module('Range', {
 			setup: function() {
-				window.people = [];
-				people.push({
-					name: 'Joe',
-					age: 60,
-					job: 'writer'
-				});
+				window.people = {
+					Joe: {
+						age: 60,
+						job: 'writer'
+					},
 
-				people.push({
-					name: 'Alex',
-					age: 10,
-					job: 'student'
-				});
+					Alex: {
+						age: 10,
+						job: 'student'
+					},
 
-				people.push({
-					name: 'Lucie',
-					age: 20,
-					job: 'researcher',
-					hobbies: ['']
-				});
-
-				people.push({
-					name: 'Felipe',
-					age: 24,
-					job: 'artist',
-					hobbies: ['skating','sleeping','photography']
-				});
+					Lucie: {
+						age: 20,
+					},
+					Felipe: {
+						age: 24
+					}
+				}
 			}
 		});
 
@@ -43,7 +35,17 @@ define(['document-matcher'], function (DocumentMatcher) {
 
 			ok(olderThan30);
 
-			ok(olderThan30(people[0]));
+			ok(olderThan30(people.Joe));
+		});
+
+
+		test('aggregate', function() {
+			var between20and24 = DocumentMatcher({
+				age: { $gte: 20, $lte: 24 }
+			});
+
+			ok(between20and24(people.Lucie));
+			ok(!between20and24(people.Joe));
 		});
 
 	}

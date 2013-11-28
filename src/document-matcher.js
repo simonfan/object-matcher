@@ -1,26 +1,24 @@
-//     DocumentMatch
+//     document-matcher
 //     (c) Simon Fan
-//     DocumentMatch is licensed under the MIT terms.
+//     document-matcher is licensed under the MIT terms.
 
 /**
- * AMD and CJS module.
+ * Curry functions to match documents against a set of criteria
+ * inspired on mongoDb's query language.
  *
- * @module DocumentMatch
+ * @module document-matcher
  */
 
 /* jshint ignore:start */
 if (typeof define !== 'function') { var define = require('amdefine')(module) }
 /* jshint ignore:end */
 
-define(["underscore.deep","underscore.contains","underscore"],
+define(['underscore.deep', 'underscore.contains', 'underscore'],
 	function (UnderscoreDeep, UnderscoreContains, _) {
 	'use strict';
 
-
 	/**
-	 * Operators for value matching.
-	 *
-	 * @class Match
+	 * @class operators
 	 * @static
 	 */
 
@@ -40,7 +38,7 @@ define(["underscore.deep","underscore.contains","underscore"],
 
 	/**
 	 * Verify if `value` supplied attends the `expected`.
-	 * Behaves according to the type of `expected`. See {{#crossLink "MongoQueryOperators/$matchSingle:method"}}{{/crossLink}}.
+	 * Behaves according to the type of `expected`. See {{#crossLink 'MongoQueryOperators/$matchSingle:method'}}{{/crossLink}}.
 	 * If `value` is an array of values, returns true if ANY of the
 	 * values attends the `expected`.
 	 *
@@ -52,13 +50,6 @@ define(["underscore.deep","underscore.contains","underscore"],
 	function $match(expected, value) {
 		return _.isArray(value) ? _.any(value, function (v) { return $matchSingle(expected, v); }) : $matchSingle(expected, value);
 	}
-
-	/**
-	 * Ranges
-	 *
-	 * @class Range
-	 * @static
-	 */
 
 	/**
 	 * Lesser than (<).
@@ -101,11 +92,6 @@ define(["underscore.deep","underscore.contains","underscore"],
 	}
 
 	/**
-	 * @class Containers
-	 * @static
-	 */
-
-	/**
 	 * @method $in
 	 * @param expected {Array}
 	 * @param value {String|Number|Array}
@@ -137,11 +123,6 @@ define(["underscore.deep","underscore.contains","underscore"],
 	function $all(expected, value) {
 		return _.containsAll(value, expected);
 	}
-
-	/**
-	 * @class Boolean
-	 * @static
-	 */
 
 	/**
 	 * @method $e
@@ -182,9 +163,6 @@ define(["underscore.deep","underscore.contains","underscore"],
 	 */
 	function $where() {}
 
-	/**
-	 * Operators
-	 */
 	var __operators = {
 		$matchSingle: $matchSingle,
 		$match: $match,
@@ -208,9 +186,14 @@ define(["underscore.deep","underscore.contains","underscore"],
 		$where: $where
 	};
 
+	/**
+	 * @class evaluators
+	 * @static
+	 */
 
 	/**
 	 * Evaluates a value against criterion
+	 *
 	 * @method evaluateValue
 	 * @param value {Any}
 	 * @param criterion {String|Number|RegExp|Object}
@@ -219,15 +202,12 @@ define(["underscore.deep","underscore.contains","underscore"],
 	 */
 	function evaluateValue(criterion, value) {
 
-		console.log(criterion);
-		console.log(value);
-
 		if (_.isObject(criterion) && !_.isRegExp(criterion)) {
 			// Criterion is actually a group of criteria
 			// that should be applied simultaneously to
 			// the value. All must be satisfied.
-			return _.every(criterion, function(expected, operator) {
-				return __operators[ operator ](expected, value);
+			return _.every(criterion, function (expected, operator) {
+				return __operators[operator](expected, value);
 			});
 
 		} else {
@@ -238,13 +218,14 @@ define(["underscore.deep","underscore.contains","underscore"],
 
 	/**
 	 * Evaluates a document against a set of criteria.
+	 *
 	 * @method evaluateDocument
 	 * @param document {Object}
 	 * @param criteria {Object}
 	 */
 	function evaluateDocument(criteria, document) {
 		// loop through criteria
-		return _.every(criteria, function(criterion, attribute) {
+		return _.every(criteria, function (criterion, attribute) {
 
 			var value = _.deep(document, attribute);
 
@@ -261,6 +242,9 @@ define(["underscore.deep","underscore.contains","underscore"],
 	function documentMatcher(criteria) {
 		return _.partial(evaluateDocument, criteria);
 	}
+
+	documentMatcher.evaluateValue = evaluateValue;
+	documentMatcher.evaluateDocument = evaluateDocument;
 
 	return documentMatcher;
 });
