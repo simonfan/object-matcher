@@ -294,9 +294,6 @@ define([&#x27;underscore.deep&#x27;, &#x27;underscore.contains&#x27;, &#x27;unde
 	 */
 	function evaluateValue(criterion, value) {
 
-		console.log(criterion);
-		console.log(value);
-
 		if (_.isObject(criterion) &amp;&amp; !_.isRegExp(criterion)) {
 			// Criterion is actually a group of criteria
 			// that should be applied simultaneously to
@@ -335,6 +332,7 @@ define([&#x27;underscore.deep&#x27;, &#x27;underscore.contains&#x27;, &#x27;unde
 	 * @param criteria {Object}
 	 */
 	function documentMatcher(criteria) {
+		criteria = criteria || {};
 		return _.partial(evaluateDocument, criteria);
 	}
 

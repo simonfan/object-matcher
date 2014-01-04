@@ -240,6 +240,7 @@ define(['underscore.deep', 'underscore.contains', 'underscore'],
 	 * @param criteria {Object}
 	 */
 	function documentMatcher(criteria) {
+		criteria = criteria || {};
 		return _.partial(evaluateDocument, criteria);
 	}
 

@@ -337,7 +337,7 @@
         },
         {
             "file": "src/document-matcher.js",
-            "line": 222,
+            "line": 219,
             "description": "Evaluates a document against a set of criteria.",
             "itemtype": "method",
             "name": "evaluateDocument",
@@ -358,7 +358,7 @@
         },
         {
             "file": "src/document-matcher.js",
-            "line": 239,
+            "line": 236,
             "description": "Returns a function that compares documents according to a specific criteria.",
             "itemtype": "method",
             "name": "documentMatcher",
