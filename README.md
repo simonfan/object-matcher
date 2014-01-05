@@ -1,1 +1,3 @@
-This is a component boilerplate. Add your description here!
+# object-matcher
+
+Match objects in mongoDb's fashion.

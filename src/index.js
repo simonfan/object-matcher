@@ -1,20 +1,18 @@
-//     document-matcher
-//     (c) Simon Fan
-//     document-matcher is licensed under the MIT terms.
+//     ObjectMatcher
+//     (c) simonfan
+//     ObjectMatcher is licensed under the MIT terms.
 
 /**
- * Curry functions to match documents against a set of criteria
- * inspired on mongoDb's query language.
+ * AMD and CJS module.
  *
- * @module document-matcher
+ * @module ObjectMatcher
  */
 
 /* jshint ignore:start */
 if (typeof define !== 'function') { var define = require('amdefine')(module) }
 /* jshint ignore:end */
 
-define(['underscore.deep', 'underscore.contains', 'underscore'],
-	function (UnderscoreDeep, UnderscoreContains, _) {
+define(["lodash", "deep", "containers"], function (_, deep, containers) {
 	'use strict';
 
 	/**
@@ -99,7 +97,7 @@ define(['underscore.deep', 'underscore.contains', 'underscore'],
 	 */
 	function $in(expected, value) {
 		return _.isArray(value) ?
-			_.containsAny(expected, value) :
+			containers.containsAny(expected, value) :
 			_.contains(expected, value);
 	}
 
@@ -111,7 +109,7 @@ define(['underscore.deep', 'underscore.contains', 'underscore'],
 	 */
 	function $nin(expected, value) {
 		return _.isArray(value) ?
-			!_.containsAny(expected, value) :
+			!containers.containsAny(expected, value) :
 			!_.contains(expected, value);
 	}
 
@@ -121,7 +119,7 @@ define(['underscore.deep', 'underscore.contains', 'underscore'],
 	 * @param value {Array}
 	 */
 	function $all(expected, value) {
-		return _.containsAll(value, expected);
+		return containers.containsAll(value, expected);
 	}
 
 	/**
@@ -216,36 +214,140 @@ define(['underscore.deep', 'underscore.contains', 'underscore'],
 		}
 	}
 
+	function ___matchAny(criterion, objects, keys) {
+		return _.any(objects, function (obj) {
+			return ___match(criterion, obj, keys);
+		});
+	}
+
+	function ___match(criterion, object, keys) {
+		var walker = deep.walker(object, keys);
+
+		// initialize res to undefined value
+		var res;
+
+		while (walker.hasNext()) {
+
+			var curr = walker.next();
+
+			if (walker.hasNext()) {
+				// still not at the end.
+
+				if (_.isArray(curr) && !/[0-9]+/.test(walker.nextStep())) {
+					// if the current value is an array,
+					// AND
+					// the next key is NOT a number
+					res = ___matchAny(criterion, curr, walker.remainingSteps());
+
+					break;
+
+				} else {
+					// otherwise, just keep looping
+					continue;
+				}
+
+			} else {
+				// at the end
+				res = evaluateValue(criterion, curr);
+
+				break;
+			}
+		}
+
+		return res;
+	}
+
+/*
+	function match(criterion, object, keys) {
+
+		// [1] parse keys
+		keys = _.isArray(keys) ? keys : deep.parseKeys(keys);
+
+		var lastKeyIndex = keys.length - 1;
+
+
+		// [2] define a response object
+		var res = false;
+
+		// [3] define a var to hold current object (for walking)
+		var curr = object;
+
+		// [4] walk over object
+		_.every(keys, function (key, index) {
+
+			// get the current value
+			curr = curr[key];
+
+			// reached the end
+
+			if (index === lastKeyIndex) {
+				// set a response
+				res = evaluateValue(criterion, curr);
+
+				// and return false to break the loop
+				return false;
+
+			} else {
+
+				// get next key
+				var nextKey = keys[index + 1];
+
+				if (_.isArray(curr) && !numberMatcher.test(nextKey)) {
+					// if the current value is an array,
+					// AND
+					// the next key is NOT a number
+					res = _.any(curr, function (obj) {
+						return match(criterion, obj, _.rest(keys, index + 1));
+					});
+
+					// break loop
+					return false;
+
+				} else {
+					// otherwise, just keep walking
+					// keep loop
+					return true;
+				}
+			}
+
+		});
+
+		return res;
+	}
+*/
 	/**
 	 * Evaluates a document against a set of criteria.
 	 *
-	 * @method evaluateDocument
+	 * @method evaluateObject
 	 * @param document {Object}
 	 * @param criteria {Object}
 	 */
-	function evaluateDocument(criteria, document) {
+	function evaluateObject(criteria, object) {
 		// loop through criteria
-		return _.every(criteria, function (criterion, attribute) {
+		return _.every(criteria, function (criterion, keys) {
 
-			var value = _.deep(document, attribute);
-
-			return evaluateValue(criterion, value);
+			return ___match(criterion, object, keys);
 		});
 	}
 
 	/**
 	 * Returns a function that compares documents according to a specific criteria.
 	 *
-	 * @method documentMatcher
+	 * @method objectMatcher
 	 * @param criteria {Object}
 	 */
-	function documentMatcher(criteria) {
+	function objectMatcher(criteria) {
 		criteria = criteria || {};
-		return _.partial(evaluateDocument, criteria);
+
+		// create a function
+		var func = _.partial(evaluateObject, criteria);
+
+		func.filter = function filter(arr) {
+			_.filter(arr, func);
+		};
+
+		return func;
 	}
 
-	documentMatcher.evaluateValue = evaluateValue;
-	documentMatcher.evaluateDocument = evaluateDocument;
-
-	return documentMatcher;
+	return objectMatcher;
 });

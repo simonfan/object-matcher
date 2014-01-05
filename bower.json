@@ -1,11 +1,12 @@
 {
-  "name": "document-matcher",
-  "main": "src/document-matcher.js",
+  "name": "object-matcher",
+  "main": "built/object-matcher.js",
   "version": "0.1.0",
+  "description": "Match objects in mongoDb's fashion.",
   "dependencies": {
-    "underscore.deep": "git://github.com/simonfan/underscore.deep.git",
-    "underscore": "~1.5.2",
-    "underscore.contains": "~0.0.1"
+    "lodash": "~2.4.1",
+    "containers": "*",
+    "deep": "*"
   },
   "devDependencies": {
     "requirejs": "*",

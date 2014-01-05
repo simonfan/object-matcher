@@ -1,26 +1,34 @@
 require.config({
-	urlArgs: 'bust=0.6466049603186548',
-	baseUrl: '/',
+	// cache busting
+	urlArgs: 'bust=' + Math.random(),
+	// base url is the root.
+	baseUrl: '/src',
+	// remember: paths are relative to the / root.
 	paths: {
-		requirejs: 'bower_components/requirejs/require',
-		text: 'bower_components/requirejs-text/text',
-		'document-matcher': 'src/document-matcher',
-		jquery: 'bower_components/jquery/jquery',
-		'requirejs-text': 'bower_components/requirejs-text/text',
-		'underscore.contains': 'bower_components/underscore.contains/src/underscore.contains',
-		'underscore.deep': 'bower_components/underscore.deep/src/underscore.deep',
-		underscore: 'bower_components/underscore/underscore'
+		requirejs: '../bower_components/requirejs/requirejs',
+		text: '../bower_components/requirejs-text/text',
+
+		mocha: '../node_modules/mocha/mocha',
+		should: '../node_modules/should/should',
+
+		// the module
+		'object-matcher': 'index',
 	},
+
+	// predefined shims... (we already know they are needed)
 	shim: {
 		backbone: {
 			exports: 'Backbone',
-			deps: [
-				'jquery',
-				'underscore'
-			]
+			deps: ['jquery', 'underscore'],
 		},
 		underscore: {
-			exports: '_'
+			exports: '_',
+		},
+		mocha: {
+			exports: 'mocha',
+		},
+		should: {
+			exports: 'should'
 		}
-	}
+	},
 });

@@ -24,17 +24,28 @@ module.exports = function (grunt) {
 		bower: {
 			target: {
 				rjsConfig: 'amdconfig.js',
+				options: {
+					baseUrl: './src'
+				}
 			}
 		},
 
-		nodeunit: {
-			files: ['test/nodeunit/*.js']
-		},
+		simplemocha: {
+			options: {
+			//	globals: ['should'],
+				timeout: 3000,
+				ignoreLeaks: false,
+			//	grep: '*-test',
+				ui: 'bdd',
+				reporter: 'dot'
+			},
 
+			all: { src: ['test/*.js'] }
+		},
 
 		yuidoc: {
 			compile: {
-				name: 'document-matcher',
+				name: 'object-matcher',
 				version: '0.0.0',
 			//	description: '',
 			// 	url: '',
@@ -63,17 +74,17 @@ module.exports = function (grunt) {
 
 			// src
 			src: {
-				src: ['src/document-matcher.js']
+				src: ['src/**/*.js']
 			}
 		},
 
 		watch: {
 			live: {
-				files: ['amdconfig.js', 'src/*.js', 'test/**', 'demo/**', 'docs/**', 'Gruntfile.js'],
+				files: ['amdconfig.js', 'src/**/*.js', 'test/**', 'demo/**', 'docs/**', 'Gruntfile.js'],
 				options: {
 					livereload: true
 				},
-				tasks: ['jshint:gruntfile', 'jshint:src', 'nodeunit']
+				tasks: ['jshint:gruntfile', 'jshint:src', 'simplemocha']
 			},
 
 			bower: {
@@ -90,11 +101,11 @@ module.exports = function (grunt) {
 					// base url where to look for module files
 					// and relative to which the module paths will be defined
 					// (must coincide with that defined in mainConfigFile)
-					baseUrl: './',
+					baseUrl: './src',
 					// module name
-					name: 'document-matcher',
+					name: 'object-matcher',
 					// output here
-					out: 'built/document-matcher.js',
+					out: 'built/object-matcher.js',
 					// config file
 					mainConfigFile: 'amdconfig.js',
 
@@ -103,25 +114,16 @@ module.exports = function (grunt) {
 
 					// exclude these modules AND their dependencies
 					// (excluding your bower dependencies)
-					exclude: ['underscore.deep', 'underscore', 'underscore.contains'],
+					exclude: ["lodash","containers","deep"],
 
 					// excludeShallow
 					excludeShallow: [],
 
 					optimize: 'uglify2',
-				}
-			},
 
-			project: {
-				options: {
-					// source files
-					appDir: 'src/',
-					// output here:
-					dir: 'built/project/',
-					mainConfigFile: 'amdconfig.js',
-
-					// do not copy these files
-					fileExclusionRegExp: /^\./,
+					pragmas: {
+						exclude: true,
+					},
 				}
 			}
 		}
@@ -142,7 +144,7 @@ module.exports = function (grunt) {
 	configuration script (amdconfig.js).
 	*/
 
-	grunt.loadNpmTasks('grunt-contrib-nodeunit');
+	grunt.loadNpmTasks('grunt-simple-mocha');
 
 
 	/**
@@ -157,6 +159,9 @@ module.exports = function (grunt) {
 		});
 	});
 
+	// mocha tests
+	grunt.registerTask('mocha', 'simplemocha');
+
 	// full live
 	grunt.registerTask('live', ['child-process-server', 'watch:live']);
 	/**
@@ -164,5 +169,5 @@ module.exports = function (grunt) {
 	[2] Starts watching files.
 	*/
 
-	grunt.registerTask('default', ['bower', 'yuidoc', 'nodeunit', 'requirejs', 'live']);
+	grunt.registerTask('default', ['bower', 'yuidoc', 'jshint:gruntfile', 'jshint:src', 'requirejs', 'simplemocha', 'live']);
 };

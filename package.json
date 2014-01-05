@@ -1,25 +1,31 @@
 {
-  "name": "document-matcher",
-  "main": "./src/document-matcher",
+  "name": "object-matcher",
+  "main": "./src",
   "version": "0.1.0",
+  "description": "Match objects in mongoDb's fashion.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/simonfan/document-matcher.git"
+    "url": "https://github.com/simonfan/object-matcher.git"
   },
   "dependencies": {
     "amdefine": ">=0.1.0",
-    "underscore": "~1.5.2",
-    "underscore.deep": "git://github.com/simonfan/underscore.deep.git",
-    "underscore.contains": "0.0.1"
+    "lodash": "~2.4.1",
+    "containers": "0.0.1",
+    "deep": "git://github.com/simonfan/deep.git"
   },
   "devDependencies": {
-    "grunt": "*",
-    "grunt-contrib-connect": "*",
-    "grunt-bower-requirejs": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-contrib-nodeunit": "*",
-    "grunt-contrib-yuidoc": "*",
-    "grunt-contrib-jshint": "*",
-    "grunt-contrib-requirejs": "*"
+    "grunt": "~0.4.2",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-bower-requirejs": "~0.7.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-yuidoc": "~0.5.0",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-requirejs": "~0.4.1",
+    "should": "~2.1.0",
+    "mocha": "~1.15.0",
+    "grunt-simple-mocha": "~0.4.0"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }

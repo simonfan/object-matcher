@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ObjectMatcher mocha unit tests</title>
+
+	<link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+
+	<!-- requireJS -->
+	<script type="text/javascript" src="../../bower_components/requirejs/require.js"></script>
+
+	<script type="text/javascript">
+
+		require(['../amdconfig'], function(undef) {
+			// now that amdconfig is loaded, the base url is /src
+            require(['mocha','text!../test/tests.json'], function(mocha, tests) {
+
+                // use mocha with bdd
+                mocha.setup('bdd');
+
+                // parse test names
+                tests = JSON.parse(tests);
+
+                // load tests via requirejs
+                require(tests, function() {
+                    // run mocha
+                    mocha.checkLeaks();
+                    mocha.run();
+                });
+            })
+
+		});
+	</script>
+
+</head>
+<body>
+	<a href="../../index.html">Menu</a>
+
+	<div id="mocha"></div>
+
+</body>
+</html>

@@ -1,5 +1,0 @@
-//     document-matcher
-//     (c) Simon Fan
-//     document-matcher is licensed under the MIT terms.
-
-define("document-matcher",["underscore.deep","underscore.contains","underscore"],function(n,t,r){function e(n,t){return r.isRegExp(n)?n.test(t):n===t}function u(n,t){return r.isArray(t)?r.any(t,function(t){return e(n,t)}):e(n,t)}function i(n,t){return n>t}function c(n,t){return n>=t}function o(n,t){return t>n}function a(n,t){return t>=n}function f(n,t){return r.isArray(t)?r.containsAny(n,t):r.contains(n,t)}function s(n,t){return r.isArray(t)?!r.containsAny(n,t):!r.contains(n,t)}function $(n,t){return r.containsAll(t,n)}function l(){}function d(n,t){return!u(n,t)}function y(){}function m(){}function v(){}function A(){}function g(n,t){return r.isObject(n)&&!r.isRegExp(n)?r.every(n,function(n,r){return x[r](n,t)}):x.$match(n,t)}function h(n,t){return r.every(n,function(n,e){var u=r.deep(t,e);return g(n,u)})}function p(n){return n=n||{},r.partial(h,n)}var x={$matchSingle:e,$match:u,$lt:i,$lte:c,$gt:o,$gte:a,$in:f,$nin:s,$all:$,$e:l,$ne:d,$or:y,$and:m,$exists:v,$where:A};return p.evaluateValue=g,p.evaluateDocument=h,p});
