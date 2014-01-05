@@ -1,0 +1,377 @@
+{
+    "project": {
+        "name": "object-matcher",
+        "version": "0.0.0"
+    },
+    "files": {
+        "src/index.js": {
+            "name": "src/index.js",
+            "modules": {
+                "ObjectMatcher": 1
+            },
+            "classes": {
+                "operators": 1,
+                "evaluators": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "ObjectMatcher": {
+            "name": "ObjectMatcher",
+            "submodules": {},
+            "classes": {
+                "operators": 1,
+                "evaluators": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/index.js",
+            "line": 187,
+            "description": "AMD and CJS module."
+        }
+    },
+    "classes": {
+        "operators": {
+            "name": "operators",
+            "shortname": "operators",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ObjectMatcher",
+            "namespace": "",
+            "file": "src/index.js",
+            "line": 18,
+            "static": 1
+        },
+        "evaluators": {
+            "name": "evaluators",
+            "shortname": "evaluators",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ObjectMatcher",
+            "namespace": "",
+            "file": "src/index.js",
+            "line": 187,
+            "static": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/index.js",
+            "line": 23,
+            "description": "Effectively does the matching against a single value",
+            "itemtype": "method",
+            "name": "$matchSingle",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "\n   String|Number: expected === value\n   RegExp: expected.match",
+                    "type": "String|Number|RegExp"
+                },
+                {
+                    "name": "value",
+                    "description": "\n   Cannot be Array!",
+                    "type": "String|Number|Boolean"
+                }
+            ],
+            "return": {
+                "description": "True if matches, false if not.",
+                "type": "Boolean"
+            },
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 37,
+            "description": "Verify if `value` supplied attends the `expected`.\nBehaves according to the type of `expected`. See {{#crossLink 'MongoQueryOperators/$matchSingle:method'}}{{/crossLink}}.\nIf `value` is an array of values, returns true if ANY of the\nvalues attends the `expected`.",
+            "itemtype": "method",
+            "name": "$match",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "String|Number|RegExp"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "String|Number|Boolean|Array"
+                }
+            ],
+            "return": {
+                "description": "True if matches, false if not.",
+                "type": "Boolean"
+            },
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 52,
+            "description": "Lesser than (<).",
+            "itemtype": "method",
+            "name": "$lt",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "Number|String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number|String"
+                }
+            ],
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 62,
+            "description": "Lesser than or equal (<=).",
+            "itemtype": "method",
+            "name": "$lte",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "Number|String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number|String"
+                }
+            ],
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 72,
+            "description": "Greater than (>).",
+            "itemtype": "method",
+            "name": "$gt",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "Number|String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number|String"
+                }
+            ],
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 82,
+            "description": "Greater than or equal (>=).",
+            "itemtype": "method",
+            "name": "$gte",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "Number|String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number|String"
+                }
+            ],
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 92,
+            "itemtype": "method",
+            "name": "$in",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "value",
+                    "description": "\n    Array: returns `true` if any of the values is in `expected`.",
+                    "type": "String|Number|Array"
+                }
+            ],
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 104,
+            "itemtype": "method",
+            "name": "$nin",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "value",
+                    "description": "\n    Array: returns `true` if any of the values is not in `expected`.",
+                    "type": "String|Number|Array"
+                }
+            ],
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 116,
+            "itemtype": "method",
+            "name": "$all",
+            "params": [
+                {
+                    "name": "expected",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Array"
+                }
+            ],
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 125,
+            "itemtype": "method",
+            "name": "$e",
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 132,
+            "itemtype": "method",
+            "name": "$ne",
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 139,
+            "itemtype": "method",
+            "name": "$not",
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 144,
+            "itemtype": "method",
+            "name": "$or",
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 149,
+            "itemtype": "method",
+            "name": "$and",
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 154,
+            "itemtype": "method",
+            "name": "$exists",
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 159,
+            "itemtype": "method",
+            "name": "$where",
+            "class": "operators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 192,
+            "description": "Evaluates a value against criterion",
+            "itemtype": "method",
+            "name": "evaluateValue",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Any"
+                },
+                {
+                    "name": "criterion",
+                    "description": "\n    String|Number|RegExp : simple comparison\n    Object               : loop through multiple criteria.",
+                    "type": "String|Number|RegExp|Object"
+                }
+            ],
+            "class": "evaluators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 318,
+            "description": "Evaluates a document against a set of criteria.",
+            "itemtype": "method",
+            "name": "evaluateObject",
+            "params": [
+                {
+                    "name": "document",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "criteria",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "evaluators",
+            "module": "ObjectMatcher"
+        },
+        {
+            "file": "src/index.js",
+            "line": 333,
+            "description": "Returns a function that compares documents according to a specific criteria.",
+            "itemtype": "method",
+            "name": "objectMatcher",
+            "params": [
+                {
+                    "name": "criteria",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "evaluators",
+            "module": "ObjectMatcher"
+        }
+    ],
+    "warnings": []
+}

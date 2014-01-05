@@ -99,7 +99,7 @@
 
 		});
 
-		describe.only('basic matcher', function () {
+		describe('basic matcher', function () {
 			it('identical', function () {
 				var stateMatcher = objectMatcher({
 					type: 'state',
