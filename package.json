@@ -1,7 +1,7 @@
 {
   "name": "object-matcher",
   "main": "./src",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Match objects in mongoDb's fashion.",
   "repository": {
     "type": "git",
