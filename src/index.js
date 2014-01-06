@@ -16,7 +16,8 @@ define(function (require, exports, module) {
 	'use strict';
 
 	var _ = require('lodash'),
-		match = require('./match');
+		match = require('./object-matcher-sub/match'),
+		find = require('./object-matcher-sub/find');
 
 	/**
 	 * Evaluates a document against a set of criteria.

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ObjectMatcher - object-matcher</title>
+    <title>src/object-matcher-submodules/operators/index.js - object-matcher</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -84,50 +84,56 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>ObjectMatcher Module</h1>
-<div class="box clearfix meta">
-    
+                        <h1 class="file-heading">File: src/object-matcher-submodules/operators/index.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+/* jshint ignore:start */
+if (typeof define !== &#x27;function&#x27;) { var define = require(&#x27;amdefine&#x27;)(module) }
+/* jshint ignore:end */
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_object-matcher-submodules_operators_match.js.html#l10"><code>src&#x2F;object-matcher-submodules&#x2F;operators&#x2F;match.js:10</code></a>
-        </div>
-    
+define(function (require, exports, module) {
+	&#x27;use strict&#x27;;
 
-    
-</div>
+	var _ = require(&#x27;lodash&#x27;),
+		deep = require(&#x27;deep&#x27;),
+		containers = require(&#x27;containers&#x27;);
 
+	_.extend(
+		exports,
+		require(&#x27;./match&#x27;),
+		require(&#x27;./range&#x27;),
+		require(&#x27;./set&#x27;),
+		require(&#x27;./boolean&#x27;)
+	);
 
+	/**
+	 * Evaluates a value against criterion
+	 *
+	 * @method evaluateValue
+	 * @param value {Any}
+	 * @param criterion {String|Number|RegExp|Object}
+	 *     String|Number|RegExp : simple comparison
+	 *     Object               : loop through multiple criteria.
+	 */
+	exports.evaluateValue = function evaluateValue(criterion, value) {
 
-<div class="box intro">
-    <p>AMD and CJS module.</p>
+		if (_.isObject(criterion) &amp;&amp; !_.isRegExp(criterion)) {
+			// Criterion is actually a group of criteria
+			// that should be applied simultaneously to
+			// the value. All must be satisfied.
+			return _.every(criterion, function (expected, operator) {
+				return exports[operator](expected, value);
+			});
 
-</div>
+		} else {
+			// Criterion is a single criterion.
+			return exports.$match(criterion, value);
+		}
+	};
+});
 
-
-
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
-
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/operators.html">
-                        operators
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
-
-    <div class="yui3-u-1-2">
-        
-    </div>
+    </pre>
 </div>
 
                     </div>

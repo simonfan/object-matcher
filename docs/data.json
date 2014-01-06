@@ -4,15 +4,49 @@
         "version": "0.0.0"
     },
     "files": {
+        "src/object-matcher-submodules/operators/boolean.js": {
+            "name": "src/object-matcher-submodules/operators/boolean.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/object-matcher-submodules/operators/index.js": {
+            "name": "src/object-matcher-submodules/operators/index.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/object-matcher-submodules/operators/match.js": {
+            "name": "src/object-matcher-submodules/operators/match.js",
+            "modules": {},
+            "classes": {
+                "operators": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/object-matcher-submodules/operators/range.js": {
+            "name": "src/object-matcher-submodules/operators/range.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/object-matcher-submodules/operators/set.js": {
+            "name": "src/object-matcher-submodules/operators/set.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
         "src/index.js": {
             "name": "src/index.js",
             "modules": {
                 "ObjectMatcher": 1
             },
-            "classes": {
-                "operators": 1,
-                "evaluators": 1
-            },
+            "classes": {},
             "fors": {},
             "namespaces": {}
         }
@@ -22,14 +56,13 @@
             "name": "ObjectMatcher",
             "submodules": {},
             "classes": {
-                "operators": 1,
-                "evaluators": 1
+                "operators": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "src/index.js",
-            "line": 187,
+            "file": "src/object-matcher-submodules/operators/match.js",
+            "line": 10,
             "description": "AMD and CJS module."
         }
     },
@@ -43,30 +76,77 @@
             "plugin_for": [],
             "extension_for": [],
             "module": "ObjectMatcher",
-            "namespace": "",
-            "file": "src/index.js",
-            "line": 18,
-            "static": 1
-        },
-        "evaluators": {
-            "name": "evaluators",
-            "shortname": "evaluators",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ObjectMatcher",
-            "namespace": "",
-            "file": "src/index.js",
-            "line": 187,
+            "file": "src/object-matcher-submodules/operators/match.js",
+            "line": 10,
             "static": 1
         }
     },
     "classitems": [
         {
-            "file": "src/index.js",
-            "line": 23,
+            "file": "src/object-matcher-submodules/operators/boolean.js",
+            "line": 8,
+            "itemtype": "method",
+            "name": "$e",
+            "class": "operators"
+        },
+        {
+            "file": "src/object-matcher-submodules/operators/boolean.js",
+            "line": 15,
+            "itemtype": "method",
+            "name": "$ne",
+            "class": "operators"
+        },
+        {
+            "file": "src/object-matcher-submodules/operators/boolean.js",
+            "line": 22,
+            "itemtype": "method",
+            "name": "$not",
+            "class": "operators"
+        },
+        {
+            "file": "src/object-matcher-submodules/operators/boolean.js",
+            "line": 27,
+            "itemtype": "method",
+            "name": "$or",
+            "class": "operators"
+        },
+        {
+            "file": "src/object-matcher-submodules/operators/boolean.js",
+            "line": 32,
+            "itemtype": "method",
+            "name": "$and",
+            "class": "operators"
+        },
+        {
+            "file": "src/object-matcher-submodules/operators/boolean.js",
+            "line": 37,
+            "itemtype": "method",
+            "name": "$exists",
+            "class": "operators"
+        },
+        {
+            "file": "src/object-matcher-submodules/operators/index.js",
+            "line": 20,
+            "description": "Evaluates a value against criterion",
+            "itemtype": "method",
+            "name": "evaluateValue",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Any"
+                },
+                {
+                    "name": "criterion",
+                    "description": "\n    String|Number|RegExp : simple comparison\n    Object               : loop through multiple criteria.",
+                    "type": "String|Number|RegExp|Object"
+                }
+            ],
+            "class": "operators"
+        },
+        {
+            "file": "src/object-matcher-submodules/operators/match.js",
+            "line": 15,
             "description": "Effectively does the matching against a single value",
             "itemtype": "method",
             "name": "$matchSingle",
@@ -86,12 +166,11 @@
                 "description": "True if matches, false if not.",
                 "type": "Boolean"
             },
-            "class": "operators",
-            "module": "ObjectMatcher"
+            "class": "operators"
         },
         {
-            "file": "src/index.js",
-            "line": 37,
+            "file": "src/object-matcher-submodules/operators/match.js",
+            "line": 29,
             "description": "Verify if `value` supplied attends the `expected`.\nBehaves according to the type of `expected`. See {{#crossLink 'MongoQueryOperators/$matchSingle:method'}}{{/crossLink}}.\nIf `value` is an array of values, returns true if ANY of the\nvalues attends the `expected`.",
             "itemtype": "method",
             "name": "$match",
@@ -111,12 +190,11 @@
                 "description": "True if matches, false if not.",
                 "type": "Boolean"
             },
-            "class": "operators",
-            "module": "ObjectMatcher"
+            "class": "operators"
         },
         {
-            "file": "src/index.js",
-            "line": 52,
+            "file": "src/object-matcher-submodules/operators/range.js",
+            "line": 8,
             "description": "Lesser than (<).",
             "itemtype": "method",
             "name": "$lt",
@@ -132,12 +210,11 @@
                     "type": "Number|String"
                 }
             ],
-            "class": "operators",
-            "module": "ObjectMatcher"
+            "class": ""
         },
         {
-            "file": "src/index.js",
-            "line": 62,
+            "file": "src/object-matcher-submodules/operators/range.js",
+            "line": 18,
             "description": "Lesser than or equal (<=).",
             "itemtype": "method",
             "name": "$lte",
@@ -153,12 +230,11 @@
                     "type": "Number|String"
                 }
             ],
-            "class": "operators",
-            "module": "ObjectMatcher"
+            "class": ""
         },
         {
-            "file": "src/index.js",
-            "line": 72,
+            "file": "src/object-matcher-submodules/operators/range.js",
+            "line": 28,
             "description": "Greater than (>).",
             "itemtype": "method",
             "name": "$gt",
@@ -174,12 +250,11 @@
                     "type": "Number|String"
                 }
             ],
-            "class": "operators",
-            "module": "ObjectMatcher"
+            "class": ""
         },
         {
-            "file": "src/index.js",
-            "line": 82,
+            "file": "src/object-matcher-submodules/operators/range.js",
+            "line": 38,
             "description": "Greater than or equal (>=).",
             "itemtype": "method",
             "name": "$gte",
@@ -195,12 +270,11 @@
                     "type": "Number|String"
                 }
             ],
-            "class": "operators",
-            "module": "ObjectMatcher"
+            "class": ""
         },
         {
-            "file": "src/index.js",
-            "line": 92,
+            "file": "src/object-matcher-submodules/operators/set.js",
+            "line": 11,
             "itemtype": "method",
             "name": "$in",
             "params": [
@@ -215,12 +289,11 @@
                     "type": "String|Number|Array"
                 }
             ],
-            "class": "operators",
-            "module": "ObjectMatcher"
+            "class": ""
         },
         {
-            "file": "src/index.js",
-            "line": 104,
+            "file": "src/object-matcher-submodules/operators/set.js",
+            "line": 22,
             "itemtype": "method",
             "name": "$nin",
             "params": [
@@ -235,12 +308,11 @@
                     "type": "String|Number|Array"
                 }
             ],
-            "class": "operators",
-            "module": "ObjectMatcher"
+            "class": ""
         },
         {
-            "file": "src/index.js",
-            "line": 116,
+            "file": "src/object-matcher-submodules/operators/set.js",
+            "line": 33,
             "itemtype": "method",
             "name": "$all",
             "params": [
@@ -255,89 +327,11 @@
                     "type": "Array"
                 }
             ],
-            "class": "operators",
-            "module": "ObjectMatcher"
+            "class": ""
         },
         {
             "file": "src/index.js",
-            "line": 125,
-            "itemtype": "method",
-            "name": "$e",
-            "class": "operators",
-            "module": "ObjectMatcher"
-        },
-        {
-            "file": "src/index.js",
-            "line": 132,
-            "itemtype": "method",
-            "name": "$ne",
-            "class": "operators",
-            "module": "ObjectMatcher"
-        },
-        {
-            "file": "src/index.js",
-            "line": 139,
-            "itemtype": "method",
-            "name": "$not",
-            "class": "operators",
-            "module": "ObjectMatcher"
-        },
-        {
-            "file": "src/index.js",
-            "line": 144,
-            "itemtype": "method",
-            "name": "$or",
-            "class": "operators",
-            "module": "ObjectMatcher"
-        },
-        {
-            "file": "src/index.js",
-            "line": 149,
-            "itemtype": "method",
-            "name": "$and",
-            "class": "operators",
-            "module": "ObjectMatcher"
-        },
-        {
-            "file": "src/index.js",
-            "line": 154,
-            "itemtype": "method",
-            "name": "$exists",
-            "class": "operators",
-            "module": "ObjectMatcher"
-        },
-        {
-            "file": "src/index.js",
-            "line": 159,
-            "itemtype": "method",
-            "name": "$where",
-            "class": "operators",
-            "module": "ObjectMatcher"
-        },
-        {
-            "file": "src/index.js",
-            "line": 192,
-            "description": "Evaluates a value against criterion",
-            "itemtype": "method",
-            "name": "evaluateValue",
-            "params": [
-                {
-                    "name": "value",
-                    "description": "",
-                    "type": "Any"
-                },
-                {
-                    "name": "criterion",
-                    "description": "\n    String|Number|RegExp : simple comparison\n    Object               : loop through multiple criteria.",
-                    "type": "String|Number|RegExp|Object"
-                }
-            ],
-            "class": "evaluators",
-            "module": "ObjectMatcher"
-        },
-        {
-            "file": "src/index.js",
-            "line": 318,
+            "line": 22,
             "description": "Evaluates a document against a set of criteria.",
             "itemtype": "method",
             "name": "evaluateObject",
@@ -353,12 +347,12 @@
                     "type": "Object"
                 }
             ],
-            "class": "evaluators",
+            "class": "",
             "module": "ObjectMatcher"
         },
         {
             "file": "src/index.js",
-            "line": 333,
+            "line": 37,
             "description": "Returns a function that compares documents according to a specific criteria.",
             "itemtype": "method",
             "name": "objectMatcher",
@@ -369,7 +363,7 @@
                     "type": "Object"
                 }
             ],
-            "class": "evaluators",
+            "class": "",
             "module": "ObjectMatcher"
         }
     ],

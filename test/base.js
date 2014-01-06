@@ -46,7 +46,8 @@
 				type: 'state',
 				country: brasil,
 				population: 41901219,
-				cities: [{ name: 'Sao Paulo' }, { name: 'Campinas'} ]
+				cities: [{ name: 'Sao Paulo' }, { name: 'Campinas'} ],
+				dishes: ['virado', 'cafe']
 			};
 
 			mg = this.mg = {
@@ -54,6 +55,7 @@
 				type: 'state',
 				country: brasil,
 				population: 19855332,
+				dishes: ['tutu', 'feijao tropeiro', 'feijoada', 'queijo']
 			}
 
 			// cities
